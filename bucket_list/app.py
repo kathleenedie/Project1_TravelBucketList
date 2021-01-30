@@ -1,9 +1,12 @@
-from flask import Flask
-    #import flask and render template
+from flask import Flask, render_template
+from controllers.visited_controller import visited_blueprint
 
 app = Flask(__name__)
+app.register_blueprint(visited_blueprint)
 
-from controllers import cities_controller
+@app.route('/')
+def home():
+    return render_template('index.html')
 
 if __name__=='__main__':
     app.run(debug=True)
