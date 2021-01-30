@@ -1,12 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
+
+{% for country in countries %}
     <div>
-        <p>This page will show cities the user has been to</p>
-        <hr>
-
+        <p>Country: {{country.name}}</p>
+        <p>Continent: {{country.continent}}</p>
     </div>
-
-
-
+{% endfor %}
 
 {% endblock %}

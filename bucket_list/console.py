@@ -2,12 +2,18 @@ import pdb
 from models.country import Country
 from models.city import City
 
+import repositories.country_repository as country_repository
 import repositories.visited_repository as visited_repository
 
+country_repository.delete_all()
+visited_repository.delete_all()
+
 country1 = Country("Uganda", "Africa")
-visited_repository.save_country(country1)
+country_repository.save_country(country1)
 country2 = Country("France", "Europe")
-visited_repository.save_country(country2)
+country_repository.save_country(country2)
+
+country_repository.country_select_all()
 
 
 city1 = City("Entebbe", 2012, "Wildlife", "http://www.bbc.co.uk", country1)
