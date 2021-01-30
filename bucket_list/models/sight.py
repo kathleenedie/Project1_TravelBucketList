@@ -1,4 +1,4 @@
-class Site:
+class Sight:
     def __init__(self, name, description, star_rating, city, id=None):
         self.name = name
         self.description = description
