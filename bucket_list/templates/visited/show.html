@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 
-{% for country in countries %}
+{% for city in cities %}
     <div>
-        <p>Country: {{country.name}}</p>
-        <p>Continent: {{country.continent}}</p>
+        <p>City: {{city.name}}</p>
+        <p>Category: {{city.category}}</p>
     </div>
 {% endfor %}
 
