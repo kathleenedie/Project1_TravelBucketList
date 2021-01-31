@@ -24,6 +24,17 @@ def city_select_all():
         cities.append(city)
     return cities
 
+def select_city(id):
+    city = None
+    sql = "SELECT * FROM cities WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
+
+    if result is not None:
+        country = country_repository.select_country(result['country_id'])
+        city = City(result['name'], result['year'], result['category'], result['photo_link'], country, result['id'] )
+    return city
+
 def cities_in_country(id):
     cities = []
     sql = "SELECT * FROM cities WHERE country_id = %s"

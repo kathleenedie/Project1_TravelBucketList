@@ -6,8 +6,10 @@
         <p>Country: {{country.name}}</p>
         <p>Continent: {{country.continent}}</p>
         <p><a href="/visited/{{country.id}}">Cities</a></p>
-        <p><a href="/visited/new">Add new country</a></p>
+        
     </div>
 {% endfor %}
+
+<p><a href="/visited/new">Add new country</a></p>
 
 {% endblock %}

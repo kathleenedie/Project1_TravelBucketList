@@ -21,7 +21,15 @@ def country_select_all():
         countries.append(country)
     return countries
 
+def select_country(id):
+    country = None
+    sql = "SELECT * FROM users WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
 
+    if result is not None:
+        country = Country(result['name'], result['continent'], result['id'] )
+    return country
 
 def delete_all():
     sql = "DELETE  FROM countries"
