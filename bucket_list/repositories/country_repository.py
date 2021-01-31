@@ -23,7 +23,7 @@ def country_select_all():
 
 def select_country(id):
     country = None
-    sql = "SELECT * FROM users WHERE id = %s"
+    sql = "SELECT * FROM countries WHERE id = %s"
     values = [id]
     result = run_sql(sql, values)[0]
 

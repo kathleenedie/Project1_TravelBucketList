@@ -26,6 +26,5 @@ city_repository.save_city(city3)
 
 city_repository.city_select_all()
 
-city_repository.cities_in_country(country2)
 
 pdb.set_trace()

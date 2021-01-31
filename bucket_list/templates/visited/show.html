@@ -1,14 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 
-{% for city in cities %}
     <div>
         <p>City: {{city.name}}</p>
         <p>Category: {{city.category}}</p>
+        <p><a href="/visited/{{city.id}}/edit">Edit</a></p>
     </div>
-    <div>
-        <p><a href="/visited/'{{country.id}}'/edit">Edit city</a></p>
-    </div>
-{% endfor %}
 
 {% endblock %}

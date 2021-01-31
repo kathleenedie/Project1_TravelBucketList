@@ -3,10 +3,10 @@
 
 is this showing up?
 
-<form action="/visited/{{country.id}}" method="post">
+<form action="/visited/{{city.id}}" method="post">
     <div>
-        <label for="city_name">City:</label>
-        <input type="text" id="city_name" value="{{city.name}}" name="city_name"autofocus>
+        <label for="name">City:</label>
+        <input type="text" id="city_name" value="{{city.name}}" name="name" required>
     </div>
     <div>
         <label for="year">Year visited:</label>
@@ -23,8 +23,8 @@ is this showing up?
     <div>
         <label for="visited">Visited:</label>
         <select name="visited" id="visited">
-            <option value="true" {% if task.completed == True %} selected="selected" {% endif %}>True</option>
-            <option value="false" {% if task.completed == False %} selected="selected" {% endif %}>False</option>
+            <option value="true" {% if city.visited == True %} selected="selected" {% endif %}>True</option>
+            <option value="false" {% if city.visited == False %} selected="selected" {% endif %}>False</option>
         </select>
     </div>
     <div>
@@ -32,7 +32,7 @@ is this showing up?
         <select name="country_id" id="country">
             {% for country in countries %}
                 <option value="{{country.id}}" 
-                {% if city.country.id == country.id %} {% endif %}>{{country.name}}
+                {% if city.country.id == country.id %} selected="selected"{% endif %}>{{country.name}}
                 </option>
             {% endfor %}
         </select>

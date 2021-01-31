@@ -20,7 +20,8 @@ def city_select_all():
     results = run_sql(sql)
 
     for row in results:
-        city = City(row['name'], row['year'], row['category'], row['photo_link'], row['country_id'], row['visited'])
+        country = country_repository.select_country(row['country_id'])
+        city = City(row['name'], row['year'], row['category'], row['photo_link'], country, row['visited'], row['id'])
         cities.append(city)
     return cities
 
@@ -32,8 +33,14 @@ def select_city(id):
 
     if result is not None:
         country = country_repository.select_country(result['country_id'])
-        city = City(result['name'], result['year'], result['category'], result['photo_link'], country, result['id'] )
+        city = City(result['name'], result['year'], result['category'], result['photo_link'], country, result['visited'], result['id'] )
     return city
+
+def update(city):
+    sql = "UPDATE cities SET (name, year, category, photo_link, country_id, visited) = (%s, %s, %s, %s, %s, %s) WHERE id = %s"
+    values = [city.name, city.year, city.category, city.photo_link, city.country.id, city.visited, city.id]
+    run_sql(sql, values)
+
 
 def cities_in_country(id):
     cities = []
@@ -45,7 +52,6 @@ def cities_in_country(id):
         city = City(row['name'], row['year'], row['category'], row['photo_link'], row['country_id'], row['visited'])
         cities.append(city)
     return cities
-
 
 
 def delete_all():

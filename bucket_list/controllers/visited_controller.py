@@ -12,8 +12,8 @@ from repositories import country_repository, city_repository
 
 @visited_blueprint.route('/visited', methods=['GET'])
 def index():
-    countries = country_repository.country_select_all()
-    return render_template("visited/index.html", countries = countries)
+    cities = city_repository.city_select_all()
+    return render_template("visited/index.html", cities = cities)
 
 @visited_blueprint.route("/visited/new", methods=['GET'])
 def new_city_visited():
@@ -40,26 +40,25 @@ def create_city():
     return redirect('/visited')
 
 @visited_blueprint.route('/visited/<id>', methods=['GET'])
-def cities_visited(id):
-    cities = city_repository.cities_in_country(id)
-    return render_template("visited/show.html", cities = cities)
+def city_visited(id):
+    city = city_repository.select_city(id)
+    return render_template("visited/show.html", city = city)
 
-# edit route needed, get request
 @visited_blueprint.route("/visited/<id>/edit", methods=["GET"])
 def edit_city_visited(id):
     city = city_repository.select_city(id)
-    countries = country_repository.select_all()
+    countries = country_repository.country_select_all()
     return render_template('visited/edit.html', city = city, countries = countries)
 
-# update route needed, put request
 @visited_blueprint.route("/visited/<id>", methods=["POST"])
 def update_city_visited(id):    
-    city_name = request.form['city_name']
+    name = request.form['name']
     year = request.form['year']
     category = request.form['category']
     photo_link = request.form['photo_link']
-    country_id = request.form['country_id']
+    country = country_repository.select_country(request.form['country_id'])
     visited = request.form['visited']
-    country = country_repository.select_country(country_id)
-    city = City(city_name, year, category, photo_link, country, visited, id)
+    city = City(name, year, category, photo_link, country, visited, id)
+    # print(city.country.name())
+    city_repository.update(city)
     return redirect('/visited')
