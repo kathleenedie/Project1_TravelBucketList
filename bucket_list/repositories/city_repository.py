@@ -25,10 +25,10 @@ def city_select_all():
         cities.append(city)
     return cities
 
-def select_city(id):
+def select_city(city_id):
     city = None
     sql = "SELECT * FROM cities WHERE id = %s"
-    values = [id]
+    values = [city_id]
     result = run_sql(sql, values)[0]
 
     if result is not None:
@@ -49,7 +49,7 @@ def cities_in_country(id):
     results = run_sql(sql, values)
 
     for row in results:
-        city = City(row['name'], row['year'], row['category'], row['photo_link'], row['country_id'], row['visited'])
+        city = City(row['name'], row['year'], row['category'], row['photo_link'], row['country_id'], row['visited'], row['id'])
         cities.append(city)
     return cities
 
@@ -57,3 +57,8 @@ def cities_in_country(id):
 def delete_all():
     sql = "DELETE  FROM cities"
     run_sql(sql)
+
+def delete(id):
+    sql = "DELETE * FROM cities WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)

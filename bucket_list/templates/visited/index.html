@@ -1,18 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
 
-{% for city in cities %}
+{% for country in countries %}
     <div>
-        <p>Country: {{city.country.name}}</p>
-        <p>City: {{city.name}}</p>
-        <p>Year visited: {{city.year}}</p>
-        <p>Best for: {{city.category}}</p>
-        <p>Photo link: {{city.photo_link}}</p>
-
-        <p><a href="/visited/{{ city.id }}">See Details</a></p>        
+        <p>Country: {{country.name}}</p>
+        <p>Continent: {{country.continent}}</p>
+        <p><a href="/visited/{{country.id}}">See Cities</a></p>
+        <hr>
     </div>
 {% endfor %}
 
 <p><a href="/visited/new">Add new country</a></p>
 
-{% endblock %}
+{% endblock %} 

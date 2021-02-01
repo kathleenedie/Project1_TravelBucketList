@@ -9,56 +9,87 @@ visited_blueprint = Blueprint("visited", __name__)
 from repositories import country_repository, city_repository
 
 
-
+# DISPLAY ALL COUNTRIES WITH LINK TO CITIES
 @visited_blueprint.route('/visited', methods=['GET'])
 def index():
-    cities = city_repository.city_select_all()
-    return render_template("visited/index.html", cities = cities)
+    countries = country_repository.country_select_all()
+    return render_template("visited/index.html", countries = countries)
 
+# DISPLAY NEW COUNTRY FORM
 @visited_blueprint.route("/visited/new", methods=['GET'])
-def new_city_visited():
+def new_country_visited():
     countries = country_repository.country_select_all()
     return render_template("visited/new.html", countries = countries)
 
+# CREATE NEW COUNTRY RECORD AND SAVE TO COUNTRIES DATABASE TABLE
 @visited_blueprint.route("/visited", methods=["POST"])
-def create_city():
+def create_country():
     name = request.form['name']
     continent = request.form['continent']
     country = Country(name, continent)
 
     country_repository.save_country(country)
 
-    city_name = request.form['city_name']
-    year = request.form['year']
-    category = request.form['category']
-    photo_link = request.form['photo_link']
-    visited = request.form['visited']
-    city = City(city_name, year, category, photo_link, country, visited)
-
-    city_repository.save_city(city)
-
     return redirect('/visited')
 
+# DISPLAY ALL CITIES WITH A GIVEN COUNTRY ID
 @visited_blueprint.route('/visited/<id>', methods=['GET'])
-def city_visited(id):
-    city = city_repository.select_city(id)
-    return render_template("visited/show.html", city = city)
+def cities_visited(id):
+    cities = city_repository.cities_in_country(id)
+    country = country_repository.select_country(id)
+    return render_template("visited/show.html", cities = cities, country = country)
 
-@visited_blueprint.route("/visited/<id>/edit", methods=["GET"])
-def edit_city_visited(id):
-    city = city_repository.select_city(id)
-    countries = country_repository.country_select_all()
-    return render_template('visited/edit.html', city = city, countries = countries)
+# DISPLAY NEW CITY FORM
+@visited_blueprint.route('/visited/<id>/new', methods=['GET'])
+def new_city_visited(id):
+    cities = city_repository.cities_in_country(id)
+    country = country_repository.select_country(id)
+    
+    return render_template("visited/city_new.html", country = country, cities = cities)
 
+# CREATE NEW CITY RECORD AND SAVE TO CITY DATABASE TABLE
 @visited_blueprint.route("/visited/<id>", methods=["POST"])
-def update_city_visited(id):    
+def create_city(id):
     name = request.form['name']
     year = request.form['year']
     category = request.form['category']
     photo_link = request.form['photo_link']
-    country = country_repository.select_country(request.form['country_id'])
+    country = country_repository.select_country(id)
     visited = request.form['visited']
-    city = City(name, year, category, photo_link, country, visited, id)
-    # print(city.country.name())
-    city_repository.update(city)
+    city = City(name, year, category, photo_link, country, visited)
+
+    city_repository.save_city(city)
+
+    return redirect("/visited/"+id) # PROBLEM WITH RETURNING TO CITIES PAGE
+
+
+@visited_blueprint.route('/visited/<id>/<city_id>', methods=['GET'])
+def city_visited(id, city_id):
+    cities = city_repository.cities_in_country(id)
+    city = city_repository.select_city(city_id)
+    return render_template("visited/show_city.html", city = city)
+
+
+
+# @visited_blueprint.route("/visited/<id>/edit", methods=["GET"])
+# def edit_city_visited(id):
+#     city = city_repository.select_city(id)
+#     countries = country_repository.country_select_all()
+#     return render_template('visited/edit.html', city = city, countries = countries)
+
+# @visited_blueprint.route("/visited/<id>", methods=["POST"])
+# def update_city_visited(id):    
+#     name = request.form['name']
+#     year = request.form['year']
+#     category = request.form['category']
+#     photo_link = request.form['photo_link']
+#     country = country_repository.select_country(request.form['country_id'])
+#     visited = request.form['visited']
+#     city = City(name, year, category, photo_link, country, visited, id)
+#     city_repository.update(city)
+#     return redirect('/visited')
+
+@visited_blueprint.route("/visited/<id>/delete", methods=['POST'])
+def delete_city(id):
+    city_repository.delete(id)
     return redirect('/visited')
