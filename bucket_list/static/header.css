@@ -1,0 +1,48 @@
+
+body > header {
+    background-color: #2E0219
+}
+
+.title, .menu-container{
+    display: inline-block;
+}
+
+.title{
+    color: #DAD7CD;
+}
+
+.menu{
+    list-style: none;
+    text-align: right;
+    padding-right: 30px;
+    padding-bottom: 10px;
+}
+
+.container{
+    background-color: #DAD7CD;
+}
+
+.countries{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    
+}
+
+.eachcountry{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    margin: 30px auto;
+    background-color: #A3B18A;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 6px #000;
+}
+
+.newlink{
+    display: flex;
+    width: 300px;
+    margin: 30px;
+    background-color: lightgray
+}

@@ -14,7 +14,7 @@ CREATE TABLE cities (
   year INT,
   category VARCHAR(255),
   photo_link VARCHAR(255),
-  country_id INT REFERENCES countries(id),
+  country_id INT REFERENCES countries(id) ON DELETE CASCADE,
   visited BOOLEAN
 );
 
@@ -23,5 +23,5 @@ CREATE TABLE sights (
   name VARCHAR(255),
   description VARCHAR(255),
   star_rating INT,
-  city_id INT REFERENCES cities(id)
+  city_id INT REFERENCES cities(id) ON DELETE CASCADE
 );

@@ -1,15 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 
+<article class="countries">
 {% for country in countries %}
-    <div>
-        <p>Country: {{country.name}}</p>
-        <p>Continent: {{country.continent}}</p>
-        <p><a href="/visited/{{country.id}}">See Cities</a></p>
+    <ul class="eachcountry">
+        <li><p>Country: {{country.name}}</p></li>
+        <li><p>Continent: {{country.continent}}</p></li>
+        <li><p><a href="/visited/{{country.id}}">See Cities</a></p></li>
         <hr>
-    </div>
+    </ul>
 {% endfor %}
+</article>
 
-<p><a href="/visited/new">Add new country</a></p>
+<p class="newlink"><a href="/visited/new">Add new country</a></p>
 
 {% endblock %} 
