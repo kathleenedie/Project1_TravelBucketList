@@ -78,7 +78,6 @@ def city_visited(id, city_id):
 
 @visited_blueprint.route("/visited/<id>/<city_id>/edit", methods=["GET"])
 def edit_city_visited(id, city_id):
-    # cities = city_repository.cities_in_country(id)
     country = country_repository.select_country(id)
     city = city_repository.select_city(city_id)
 
@@ -96,14 +95,13 @@ def update_city_visited(id, city_id):
     city_repository.update(city)
     return redirect('/visited/'+id)
 
-# @visited_blueprint.route("/visited/<id>/<city_id>/delete", methods=['POST'])
-# def delete_city(id, city_id):
-#     city
-#     city_repository.delete(city_id)
-
-#     return redirect('/visited/'+id)
+@visited_blueprint.route("/visited/<id>/delete", methods=['POST'])
+def delete_city(id):
+    city_repository.delete(id)
+    return redirect('/visited')
 
 @visited_blueprint.route("/destination", methods=['GET'])
 def cities_visited_page():
     cities = city_repository.city_select_visited()
+
     return render_template("destination/index.html", cities = cities)

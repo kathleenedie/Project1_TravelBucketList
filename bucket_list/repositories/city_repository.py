@@ -58,8 +58,8 @@ def delete_all():
     sql = "DELETE  FROM cities"
     run_sql(sql)
 
-def delete(city_id):
-    sql = "DELETE * FROM cities WHERE id = %s"
+def delete(id):
+    sql = "DELETE FROM cities WHERE id = %s"
     values = [id]
     run_sql(sql, values)
 
@@ -69,6 +69,17 @@ def city_select_visited():
     results = run_sql(sql)
 
     for row in results:
-        city = City(row['name'], row['year'], row['category'], row['photo_link'], row['country_id'], row['visited'], row['id'])
+        country = country_repository.select_country(row['country_id'])
+        city = City(row['name'], row['year'], row['category'], row['photo_link'], country, row['visited'], row['id'])
         cities.append(city)
     return cities
+
+    # sorted_cities = []
+    # for city in cities:
+    #     key = city.country.id
+    #     if key not in sorted_cities:
+    #         sorted_cities[city.country.id]
+    #     sorted_cities[key].append(city)
+    # return sorted_cities
+
+    

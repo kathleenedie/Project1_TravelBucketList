@@ -2,13 +2,18 @@
 {% block content %}
 
 <article class="destinations">
+
 {% for city in cities %}
+
+
     <ul class="eachdestination">
         <li>City: {{city.name}}</li>
         <li>Year: {{city.year}}</li>
-        <hr>
+        <li>Country: {{city.country.id}}</li>
     </ul>
+
 {% endfor %}
+
 </article>
 
 
