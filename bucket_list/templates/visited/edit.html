@@ -1,9 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 
-is this showing up?
-
-<form action="/visited/{{country.id}}/{{city.id}}" method="post">
+<article class="formcontainer">
+<form class="form" action="/visited/{{country.id}}/{{city.id}}" method="post">
     <div>
         <label for="name">City:</label>
         <input type="text" id="city_name" value="{{city.name}}" name="name" required>
@@ -39,5 +38,5 @@ is this showing up?
     </div>
     <button type="submit">Amend City</button>
 </form>
-
+</article>
 {% endblock %}

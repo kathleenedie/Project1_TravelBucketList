@@ -44,7 +44,7 @@ def update(city):
 
 def cities_in_country(id):
     cities = []
-    sql = "SELECT * FROM cities WHERE country_id = %s"
+    sql = "SELECT * FROM cities WHERE country_id = %s AND visited = False"
     values = [id]
     results = run_sql(sql, values)
 
@@ -62,3 +62,13 @@ def delete(city_id):
     sql = "DELETE * FROM cities WHERE id = %s"
     values = [id]
     run_sql(sql, values)
+
+def city_select_visited():
+    cities = []
+    sql = "SELECT * FROM cities WHERE visited = True"
+    results = run_sql(sql)
+
+    for row in results:
+        city = City(row['name'], row['year'], row['category'], row['photo_link'], row['country_id'], row['visited'], row['id'])
+        cities.append(city)
+    return cities

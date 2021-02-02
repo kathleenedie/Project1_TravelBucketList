@@ -9,6 +9,11 @@ visited_blueprint = Blueprint("visited", __name__)
 from repositories import country_repository, city_repository
 
 
+# HOME PAGE
+@visited_blueprint.route('/', methods=['GET'])
+def home():
+    return render_template("index.html")
+
 # DISPLAY ALL COUNTRIES WITH LINK TO CITIES
 @visited_blueprint.route('/visited', methods=['GET'])
 def index():
@@ -97,3 +102,8 @@ def update_city_visited(id, city_id):
 #     city_repository.delete(city_id)
 
 #     return redirect('/visited/'+id)
+
+@visited_blueprint.route("/destination", methods=['GET'])
+def cities_visited_page():
+    cities = city_repository.city_select_visited()
+    return render_template("destination/index.html", cities = cities)

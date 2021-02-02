@@ -1,15 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 
+<article class="destinations">
 
-    <div>
-        <p>City: {{city.name}}</p>
-        <p>Category: {{city.category}}</p>
-        <p>Year visited: {{city.year}}</p>
+    <ul class="eachdestination">
+        <li>City: {{city.name}}</li>
+        <li>Category: {{city.category}}</li>
+        <li>Year visited: {{city.year}}</li>
 
         <p><a href="/visited/{{ city.country.id }}/{{ city.id }}/edit">Edit</a></p>
-        
-    </div>
 
+    </ul>
+
+</article>
 
 {% endblock %}
