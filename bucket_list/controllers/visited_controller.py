@@ -14,6 +14,13 @@ from repositories import country_repository, city_repository
 def home():
     return render_template("index.html")
 
+@visited_blueprint.route('/result', methods=['POST'])
+def search_result():
+    search = request.form['search']
+    city = city_repository.search_results(search)
+    # country = country_repository.search_results_country(search)
+    return render_template('results.html', city = city)
+
 # DISPLAY ALL COUNTRIES WITH LINK TO CITIES
 @visited_blueprint.route('/visited', methods=['GET'])
 def index():

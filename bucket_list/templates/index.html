@@ -7,4 +7,15 @@
 <p>With Bucket List you can look back on where you have travelled, keep track of where you want to go and put together lists of recommended places for friends
 
 </article>
+
+<article class="formcontainer">
+    <form class="form" action="/result" method="post">
+        <div>
+            <label for="search">City search:</label>
+            <input type="text" id="search" name="search" placeholder="Search for a city..." required autofocus>
+        </div>
+        <button type="submit">Search</button>
+    </form>
+</article>
+
 {% endblock %}

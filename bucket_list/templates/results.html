@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Search result:</h2>
+
+<article class="eachdestination">
+<ul>{{city.country.name}}
+<li>{{city.name}}</li>
+<li>{{city.category}}</li>
+<li>{% if city.visited == True %} I've been {% endif %}</li>
+<li>{% if city.visited == False %} I need to go {% endif %}</li>
+<li>{% if city.visited == False %} <a href="/visited/{{ city.country.id }}/{{ city.id }}/edit">I Went</a> {% endif %}</li>
+</ul>
+</article>
+
+
+{% endblock %}

@@ -92,3 +92,27 @@ def categories_of_cities(category):
         city = City(row['name'], row['year'], row['category'], row['photo_link'], row['country_id'], row['visited'], row['id'])
         cities.append(city)
     return cities
+
+def search_results(search):
+    city = None
+    sql = "SELECT * FROM cities WHERE name = %s"
+    values = [search]
+    result = run_sql(sql, values)[0]
+
+
+    if result is not None:
+        country = country_repository.select_country(result['country_id'])
+        city = City(result['name'], result['year'], result['category'], result['photo_link'], country, result['visited'], result['id'] )
+    return city
+
+# def search_results_country(search):
+#     country = None
+#     sql = "SELECT * FROM countries WHERE name = %s"
+#     values = [search]
+#     result = run_sql(sql, values)[0]
+
+#     if result is not None:
+#         country = Country(result['name'], result['continent'], result['id'])
+#     return country
+
+
