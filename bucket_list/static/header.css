@@ -1,28 +1,35 @@
 
-body > header {
-    background-color: #2E0219
+body{
+    background-image: url("palm_tree.jpg");
+    background-color: #CDD4BF;
+    background-blend-mode: lighten;
+    background-size: cover;
 }
 
-.title, .menu-container{
-    display: inline-block;
+.banner {
+    background-color: #301523;
+    display: flex;
+    justify-content: space-between;
+
 }
 
 .title{
-    color: #DAD7CD;
+    color: #F6F6F3;
+    padding-left: 30px;
 }
 
 .menu{
     list-style: none;
     text-align: right;
     padding-right: 30px;
-    padding-bottom: 10px;
 }
 
-.container{
-    background-color: #DAD7CD;
+a{
+    color: #F6F6F3;
 }
 
-.countries{
+
+.destinations{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -30,19 +37,60 @@ body > header {
     
 }
 
-.eachcountry{
+.eachdestination{
     display: flex;
     flex-direction: column;
     width: 200px;
     margin: 30px auto;
-    background-color: #A3B18A;
-    border: 1px solid #ccc;
+    background-color: #CDD4BF;
+    border: 1px solid #344E41;
+    border-radius: 10px;
     box-shadow: 0 4px 6px #000;
+    list-style: none;
+    padding-top: 20px;
 }
 
 .newlink{
     display: flex;
-    width: 300px;
-    margin: 30px;
-    background-color: lightgray
+    align-self: flex-start;
+    width: 200px;
+    margin: 30px auto;
+    background-color: #7C6973;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px #000;
+    list-style: none;
+    text-align: center;
+    padding: 20px;
+}
+
+.formcontainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 80px;
+
+}
+
+.form{
+    width: 200px;
+    padding: 20px;
+    background-color: #7C6973;
+}
+
+input[type=text], input[type=number], select{
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow:0 0 3px 3px #F6F6F3;
+}
+
+label{
+    color: #F6F6F3;
+}
+
+button{
+    background-color: #F6F6F3;
+    border-radius: 10px;
+    box-align: center;
 }

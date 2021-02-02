@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 
-<article class="countries">
+<article class="destinations">
 {% for country in countries %}
-    <ul class="eachcountry">
-        <li><p>Country: {{country.name}}</p></li>
-        <li><p>Continent: {{country.continent}}</p></li>
+    <ul class="eachdestination">
+        <li>Country: {{country.name}}</li>
+        <li>Continent: {{country.continent}}</li>
         <li><p><a href="/visited/{{country.id}}">See Cities</a></p></li>
         <hr>
     </ul>

@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form action="/visited" method="post">
+<article class="formcontainer">
+<form class="form" action="/visited" method="post">
     <div>
         <label for="name">Country:</label>
         <input type="text" id="name" name="name" placeholder="Country Name" required autofocus>
@@ -9,8 +10,9 @@
     <div>
         <label for="continent">Continent:</label>
         <input type="text" id="continent" name="continent" placeholder="Continent" required>
-
+    </div>
     <button type="submit">Add Country</button>
 </form>
+</article>
 
 {% endblock %}
