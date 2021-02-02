@@ -11,7 +11,7 @@
         <li>City: {{city.name}}</li>
         <li>Category: {{city.category}}</li>
         <li>ID: {{city.id}}</li>
-        <li><p><a href="/visited/{{ country.id }}/{{ city.id }}">See city details</a></p></li>
+        <li><p><a href="/visited/{{country.id}}/{{city.id}}">See city details</a></p></li>
         <form action="/visited/{{city.id}}/delete" class="delete-form" method="POST">
             <input type=submit value="Delete">
         </form>

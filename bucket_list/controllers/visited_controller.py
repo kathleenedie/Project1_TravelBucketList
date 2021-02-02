@@ -56,11 +56,11 @@ def new_city_visited(id):
 @visited_blueprint.route("/visited/<id>", methods=["POST"])
 def create_city(id):
     name = request.form['name']
-    year = request.form['year']
+    year = None
     category = request.form['category']
-    photo_link = request.form['photo_link']
+    photo_link = None
     country = country_repository.select_country(id)
-    visited = request.form['visited']
+    visited = False
     city = City(name, year, category, photo_link, country, visited)
 
     city_repository.save_city(city)
@@ -105,3 +105,14 @@ def cities_visited_page():
     cities = city_repository.city_select_visited()
 
     return render_template("destination/index.html", cities = cities)
+
+@visited_blueprint.route("/recommend", methods=['GET'])
+def recommend_by_category():
+
+    return render_template("recommend/category.html")
+
+@visited_blueprint.route("/recommend/category", methods=["POST"])
+def recommend_by_category_cities():    
+    category = request.form['category']
+    cities = city_repository.categories_of_cities(category)
+    return render_template('recommend/category_list.html', cities=cities)

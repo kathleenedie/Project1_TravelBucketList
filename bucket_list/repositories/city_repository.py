@@ -82,4 +82,13 @@ def city_select_visited():
     #     sorted_cities[key].append(city)
     # return sorted_cities
 
-    
+def categories_of_cities(category):
+    cities = []
+    sql = "SELECT * FROM cities WHERE category = %s AND visited = True"
+    values = [category]
+    results = run_sql(sql, values)
+
+    for row in results:
+        city = City(row['name'], row['year'], row['category'], row['photo_link'], row['country_id'], row['visited'], row['id'])
+        cities.append(city)
+    return cities

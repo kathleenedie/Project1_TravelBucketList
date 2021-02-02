@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action="/recommend/category" method="POST">
+
+<div>
+    <label for="category">Category:</label>
+    <select name="category">
+        <option value="Food">Food & Drink</option>
+        <option value="Culture">Culture</option>
+        <option value="History">History</option>
+        <option value="Language">Language</option>
+    </select>
+    <input type="submit" value="Recommend">
+</div>
+
+</form>
+
+{% endblock %}
