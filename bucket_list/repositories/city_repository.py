@@ -65,7 +65,7 @@ def delete(id):
 
 def city_select_visited():
     cities = []
-    sql = "SELECT * FROM cities WHERE visited = True"
+    sql = "SELECT * FROM cities WHERE visited = True ORDER BY cities.country_id"
     results = run_sql(sql)
 
     for row in results:

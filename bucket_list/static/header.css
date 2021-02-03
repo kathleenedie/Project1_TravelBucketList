@@ -88,11 +88,11 @@ h2{
     border: 1px solid #344E41;
     opacity: 0.8;
     color: #101814;
+    word-wrap: break-word;
     border-radius: 10px;
     box-shadow: 0 4px 6px #000;
     list-style: none;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 20px;
 }
 
 .newlink{

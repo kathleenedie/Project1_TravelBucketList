@@ -1,3 +1,4 @@
+
 DROP TABLE IF EXISTS sights;
 DROP TABLE IF EXISTS cities;
 DROP TABLE IF EXISTS countries;
