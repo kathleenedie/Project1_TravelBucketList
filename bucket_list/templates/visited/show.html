@@ -2,16 +2,16 @@
 {% block content %}
 
 
-<h1>Country: {{country.name}}</h1>
+<h2>Cities in {{country.name}}</h2>
 
 <article class="destinations">
 
     {% for city in cities%}
     <ul class="eachdestination">
         <li>City: {{city.name}}</li>
-        <li>Category: {{city.category}}</li>
-        <li>ID: {{city.id}}</li>
-        <li><p><a href="/visited/{{country.id}}/{{city.id}}">See city details</a></p></li>
+        <li>Famous for: {{city.category}}</li>
+        <li>Status: {{city.visited}}</li>
+        <li><p><a href="/visited/{{country.id}}/{{city.id}}">Let's Go!</a></p></li>
         <form action="/visited/{{city.id}}/delete" class="delete-form" method="POST">
             <input type=submit value="Delete">
         </form>

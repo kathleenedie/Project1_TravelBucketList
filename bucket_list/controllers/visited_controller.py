@@ -81,10 +81,9 @@ def city_visited(id, city_id):
     city = city_repository.select_city(city_id)
     return render_template("visited/show_city.html", city = city)
 
-
-
 @visited_blueprint.route("/visited/<id>/<city_id>/edit", methods=["GET"])
 def edit_city_visited(id, city_id):
+    # cities = city_repository.cities_in_country(id)
     country = country_repository.select_country(id)
     city = city_repository.select_city(city_id)
 
@@ -98,7 +97,7 @@ def update_city_visited(id, city_id):
     photo_link = request.form['photo_link']
     country = country_repository.select_country(id)
     visited = request.form['visited']
-    city = City(name, year, category, photo_link, country, visited, id)
+    city = City(name, year, category, photo_link, country, visited, city_id)
     city_repository.update(city)
     return redirect('/visited/'+id)
 
