@@ -7,8 +7,8 @@
 <article class="destinations">
 {% for country in countries %}
     <ul class="eachdestination">
-        <li>Country: {{country.name}}</li>
-        <li>Continent: {{country.continent}}</li>
+        <li><strong>Country: </strong>{{country.name}}</li>
+        <li><strong>Continent: </strong>{{country.continent}}</li>
         <li><p><a href="/visited/{{country.id}}">See Cities</a></p></li>
         <hr>
     </ul>

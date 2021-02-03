@@ -5,11 +5,12 @@
 
 <article class="destination">
 <ul class="eachdestination">
-    <li>{{city.country.name}}</li>
-    <li>{{city.name}}</li>
-    <li>{{city.category}}</li>
-    <li>{% if city.visited == True %} I've been {% endif %}</li>
-    <li>{% if city.visited == False %} I need to go {% endif %}</li>
+    <li><strong>Country: </strong>{{city.country.name}}</li>
+    <li><strong>City: </strong>{{city.name}}</li>
+    <li><strong>Famous for: </strong>{{city.category}}</li>
+    <hr>
+    <li>{% if city.visited == True %} I've been! {% endif %}</li>
+    <li>{% if city.visited == False %} I need to go!!! {% endif %}</li>
     <li>{% if city.visited == False %} <a href="/visited/{{ city.country.id }}/{{ city.id }}/edit">I Went</a> {% endif %}</li>
 </ul>
 </article>

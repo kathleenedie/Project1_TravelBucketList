@@ -17,6 +17,7 @@ body{
 .title{
     color: #F6F6F3;
     padding-left: 30px;
+    font-family: 'Lemonada', cursive;
 }
 
 .menu{
@@ -29,13 +30,53 @@ a{
     color: #F6F6F3;
 }
 
+h2{
+    font-size: 28px;
+    text-align: center;
+    color: #301523;
+    font-family:'Lemonada', cursive;
+    font-weight: 400;
+}
+
+.footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #301523;
+    opacity: 0.6;
+    color: white;
+    text-align: center;
+}
+
+.container{
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 5rem;
+  }
+
+
+.blurb{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin: 30px auto;
+    background-color: #3A5A40;
+    opacity: 0.8;
+    border: 1px solid #344E41;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px #000;
+    list-style: none;
+    padding: 30px;
+    color: #CDD4BF;
+    text-align: centre;
+}
 
 .destinations{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    
+    justify-content: flex-start;   
 }
 
 .eachdestination{
@@ -43,17 +84,21 @@ a{
     flex-direction: column;
     width: 200px;
     margin: 30px auto;
-    background-color: #CDD4BF;
+    background-color: #A3B18A;
     border: 1px solid #344E41;
+    opacity: 0.8;
+    color: #101814;
     border-radius: 10px;
     box-shadow: 0 4px 6px #000;
     list-style: none;
     padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .newlink{
     display: flex;
     align-self: flex-start;
+    justify-content: center;
     width: 200px;
     margin: 30px auto;
     background-color: #7C6973;
@@ -77,6 +122,7 @@ a{
     width: 200px;
     padding: 20px;
     background-color: #7C6973;
+    justify-content: center;
 }
 
 input[type=text], input[type=number], select{
@@ -94,4 +140,21 @@ button{
     background-color: #F6F6F3;
     border-radius: 10px;
     box-align: center;
+    text-align: center;
+}
+
+input[type=submit]{
+    background-color: #F6F6F3;
+    border-radius: 10px;
+    box-align: center;
+    text-align: center;   
+}
+
+.delete-form{
+    border-radius: 10px;
+}
+
+hr{
+    color: #301523;
+    ;
 }

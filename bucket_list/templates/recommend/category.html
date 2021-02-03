@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form action="/recommend/category" method="POST">
+<h2>Where I could Recomend</h2>
+
+<article class="formcontainer">
+
+<form class="form" action="/recommend/category" method="POST">
 
 <div>
     <label for="category">Category:</label>
@@ -19,5 +23,6 @@
 
 </form>
 
+</article>
 
 {% endblock %}

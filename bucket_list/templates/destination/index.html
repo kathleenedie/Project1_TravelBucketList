@@ -1,16 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
 
+<h2>My Past Trips</h2>
+
 <article class="destinations">
 
 {% for city in cities %}
 
 
     <ul class="eachdestination">
-        <li>City: {{city.name}}</li>
-        <li>Year: {{city.year}}</li>
-        <li>Country: {{city.country.id}}</li>
-        <li>Category: {{city.category}}</li>
+        <li><strong>Country: </strong>{{city.country.name}}</li>
+        <li><strong>City: </strong>{{city.name}}</li>
+        <li><strong>Famous for: </strong>{{city.category}}</li>
+        <hr>
+        <li><strong>I went in: </strong>{{city.year}}</li>
+        <li><strong>And took this photo: </strong>{{city.photo_link}}</li>
+        
+        
     </ul>
 
 {% endfor %}

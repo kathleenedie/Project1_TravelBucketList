@@ -8,9 +8,8 @@
 
     {% for city in cities%}
     <ul class="eachdestination">
-        <li>City: {{city.name}}</li>
-        <li>Famous for: {{city.category}}</li>
-        <li>Status: {{city.visited}}</li>
+        <li><strong>City: </strong>{{city.name}}</li>
+        <li><strong>Famous for: </strong>{{city.category}}</li>
         <li><p><a href="/visited/{{country.id}}/{{city.id}}">Let's Go!</a></p></li>
         <form action="/visited/{{city.id}}/delete" class="delete-form" method="POST">
             <input type=submit value="Delete">

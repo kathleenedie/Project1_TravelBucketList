@@ -1,16 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
 
-
+<h2>My Hit List</h2>
 
 <article class="destinations">
-    
-    {% for city in cities%}
-    <ul class="eachdestination">
-        <li>City: {{city.name}}</li>
-    </ul>
-    {% endfor %}
 
-</article>
+    {% for city in cities %}
+    
+    
+        <ul class="eachdestination">
+            <li><strong>City: </strong>{{city.name}}</li>
+            <li><strong>Famous for: </strong>{{city.category}}</li>
+            <hr>
+            <li><strong>I went in: </strong> {{city.year}}</li>
+            <li><strong>And took this photo: </strong>{{city.photo_link}}</li>
+            
+            
+        </ul>
+    
+    {% endfor %}
+    
+    </article>
 
 {% endblock %}
